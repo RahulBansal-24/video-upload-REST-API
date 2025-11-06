@@ -36,12 +36,12 @@ cd video-upload-REST-API
 npm install express mongoose cors dotenv
 ```
 
-### 3️⃣ Run the project
+### 3️⃣ Run the project locally
 ```bash
 node server.js
 ```
 
-### 4️⃣ Server will start on (http://localhost:8080)
+Server will start on (http://localhost:8080)
 
 ---
 
@@ -51,9 +51,83 @@ The MongoDB connection string is defined inside server.js.
 Here for devTown team testing actual DB string is given 
 but general format is:
 
-const MONGO_URL = "mongodb+srv://<username>:<password>@cluster0.mongodb.net/podcast";
+const MONGO_URL = "mongodb+srv://<username>:<password>@cluster0.mongodb.net/podcast";  
+  
+Insert your mongoDB **username** and **password** in respective spaces
 
 ---
+
+## 🌍 Deploying on Render
+
+If you want to deploy this **Video Upload REST API** from this repository on your own Render account, follow these steps 👇  
+
+---
+
+### 1️⃣ Log in to Render
+Go to [https://render.com](https://render.com)  
+Sign up or log in with your **GitHub account**.
+
+---
+
+### 2️⃣ Create a New Web Service
+- From your Render dashboard, click **New +** → **Web Service**
+- Choose **“Build and deploy from a Git repository”**
+- Connect your GitHub account (if not already connected)
+- Select **your forked repository** (or this one if cloned directly from RahulBansal-24)
+
+---
+
+### 3️⃣ Configure the Service
+Fill in the details as follows:
+
+| Setting | Value |
+|----------|--------|
+| **Name** | `video-upload-rest-api` |
+| **Environment** | `Node` |
+| **Build Command** | `npm install` |
+| **Start Command** | `node server.js` |
+
+Then click **Create Web Service**.
+
+---
+
+### 4️⃣ Deploy
+Render will automatically:
+- Clone the repository  
+- Install dependencies (`npm install`)  
+- Start the server (`node server.js`)
+
+Once deployment completes, you’ll see logs like:  
+
+MongoDB connected
+
+---
+
+## 🧪 Testing the API Using Postman
+
+You can test all CRUD operations of this API using [Postman](https://www.postman.com/).
+
+---
+
+### 1️⃣ Base URL
+Use your deployed URL:  
+
+https://video-upload-rest-api.onrender.com/api/videos
+
+
+---
+
+### 2️⃣ Test the Endpoints
+
+| Method | Endpoint | Description |
+|---------|-----------|-------------|
+| **GET** | `/api/videos` | Retrieve all videos |
+| **POST** | `/api/videos` | Add a new video |
+| **PUT** | `/api/videos/:id` | Update an existing video by ID |
+| **DELETE** | `/api/videos/:id` | Delete a video by ID |
+
+---
+
 
 ## 📡 API Endpoints
 
@@ -69,9 +143,9 @@ http://localhost:8080/api/videos
 **Request Body (JSON):**
 ```json
 {
-  "title": "JavaScript Basics",
-  "description": "Introduction to JS fundamentals",
-  "videoUrl": "https://youtu.be/example-link"
+  "title": "JavaScript Basics Tutorial",
+  "description": "An introductory video covering JavaScript fundamentals, variables, and functions.",
+  "videoUrl": "https://www.youtube.com/watch?v=W6NZfCO5SIk"
 }
 ```
 
@@ -79,14 +153,15 @@ http://localhost:8080/api/videos
 ```json
 {
   "success": true,
-  "message": "Video added successfully!",
+  "message": "Video added successfully",
   "data": {
-    "_id": "6737e4d91b4b283e45f2f4cb",
-    "title": "JavaScript Basics",
-    "description": "Introduction to JS fundamentals",
-    "videoUrl": "https://youtu.be/example-link",
-    "createdAt": "2025-10-28T14:00:00.000Z",
-    "__v": 0
+      "title": "JavaScript Basics Tutorial",
+      "description": "An introductory video covering JavaScript fundamentals, variables, and functions.",
+      "videoUrl": "https://www.youtube.com/watch?v=W6NZfCO5SIk",
+      "_id": "690c8d011d7eebe17a57895a",
+      "createdAt": "2025-11-06T11:56:49.036Z",
+      "updatedAt": "2025-11-06T11:56:49.039Z",
+      "__v": 0
   }
 }
 ```
@@ -94,8 +169,11 @@ http://localhost:8080/api/videos
 **Error (400):**
 ```json
 {
+{
   "success": false,
   "message": "Bad request: title and videoUrl are required"
+}
+
 }
 ```
 
@@ -110,14 +188,15 @@ http://localhost:8080/api/videos
 {
   "success": true,
   "data": [
-    {
-      "_id": "6737e4d91b4b283e45f2f4cb",
-      "title": "JavaScript Basics",
-      "description": "Introduction to JS fundamentals",
-      "videoUrl": "https://youtu.be/example-link",
-      "createdAt": "2025-10-28T14:00:00.000Z",
-      "__v": 0
-    }
+      {
+          "_id": "690c8d011d7eebe17a57895a",
+          "title": "JavaScript Basics Tutorial",
+          "description": "An introductory video covering JavaScript fundamentals, variables, and functions.",
+          "videoUrl": "https://www.youtube.com/watch?v=W6NZfCO5SIk",
+          "createdAt": "2025-11-06T11:56:49.036Z",
+          "updatedAt": "2025-11-06T11:56:49.039Z",
+          "__v": 0
+      }
   ]
 }
 ```
@@ -131,9 +210,8 @@ http://localhost:8080/api/videos
 **Request Body (JSON):**
 ```json
 {
-  "title": "JavaScript Basics - Updated",
-  "description": "Improved explanation with examples",
-  "videoUrl": "https://youtu.be/new-example-link"
+  "title": "Mastering JavaScript Fundamentals",
+  "description": "Updated version with more detailed explanations of variables, functions, and control structures for better learning."
 }
 ```
 
@@ -141,15 +219,15 @@ http://localhost:8080/api/videos
 ```json
 {
   "success": true,
-  "message": "Video updated successfully",
+  "message": "video updated successfully",
   "data": {
-    "_id": "6737e4d91b4b283e45f2f4cb",
-    "title": "JavaScript Basics - Updated",
-    "description": "Improved explanation with examples",
-    "videoUrl": "https://youtu.be/new-example-link",
-    "createdAt": "2025-10-28T14:00:00.000Z",
-    "updatedAt": "2025-11-06T10:00:00.000Z",
-    "__v": 0
+      "_id": "690c8d011d7eebe17a57895a",
+      "title": "Mastering JavaScript Fundamentals",
+      "description": "Updated version with more detailed explanations of variables, functions, and control structures for better learning.",
+      "videoUrl": "https://www.youtube.com/watch?v=W6NZfCO5SIk",
+      "createdAt": "2025-11-06T11:56:49.036Z",
+      "updatedAt": "2025-11-06T12:10:08.656Z",
+      "__v": 0
   }
 }
 ```
