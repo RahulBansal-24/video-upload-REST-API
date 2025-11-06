@@ -94,11 +94,8 @@ http://localhost:8080/api/videos
 **Error (400):**
 ```json
 {
-{
   "success": false,
   "message": "Bad request: title and videoUrl are required"
-}
-
 }
 ```
 
