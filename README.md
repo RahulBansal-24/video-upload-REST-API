@@ -110,7 +110,7 @@ You can test all CRUD operations of this API using [Postman](https://www.postman
 ### 1️⃣ Base URL
 Use your deployed URL:  
 
-https://video-upload-rest-api.onrender.com/api/videos
+https://<project_name>.onrender.com/api/videos
 
 
 ---
@@ -324,4 +324,5 @@ For full license terms, see the [LICENSE](./LICENSE) file included in this repos
 🚀 Constantly learning by building hands-on projects and sharing them with the community.  
 
 📬 **GitHub:** [RahulBansal-24](https://github.com/RahulBansal-24)  
+
 🔗 **LinkedIn:** [Rahul Bansal](https://www.linkedin.com/in/itsrahulbansal24)
