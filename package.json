@@ -8,7 +8,7 @@
   },
   "keywords": ["nodejs", "express", "mongodb", "restapi", "video"],
   "author": "Rahul Bansal",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.5",

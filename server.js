@@ -12,9 +12,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//database url (/podcast creates a DB named podcast)
+//database url
 const Mongo_url =
-  "mongodb+srv://Rahul:24AUgust2004@cluster0.sklud2r.mongodb.net/podcast"; //actual string for devtown team testing
+  "enter your mongoDB url here"; // Tip: add "/<database_name>" after mongoDB link to create a database with that name"
 
 //DB connection establish and checking
 mongoose
